@@ -1,1 +1,361 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inversiones y construcciones soldalexca</title>
+  <meta name="description" content="Sitio oficial de herrería: puertas, ventanas, estructuras y arte en hierro">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%232b2b2b'/%3E%3Cpath d='M8 24 L16 8 L24 24 Z' stroke='orange' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --primary: #323232;
+      --accent: #ff9800;
+      --bg: #f3f3f3;
+      --text: #262626;
+      --radius: 16px;
+      --transition: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background: linear-gradient(90deg, var(--primary), #484848);
+      color: #fff;
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 2px;
+      animation: fade-down 1.2s;
+    }
+    @keyframes fade-down {
+      from { opacity: 0; transform: translateY(-30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    header svg {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0.5rem;
+      animation: swing 2s infinite alternate;
+    }
+    @keyframes swing {
+      0% { transform: rotate(-8deg);}
+      100% { transform: rotate(8deg);}
+    }
+    nav {
+      margin: 1.5rem 0 0.5rem 0;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 1.2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius);
+      transition: background var(--transition);
+    }
+    nav a:hover, nav a.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      padding: 2rem 1rem;
+      animation: fade-in 1s;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: scale(0.96);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    .section-title {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-align: center;
+      position: relative;
+      font-weight: 700;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      margin: 0.3rem auto 0 auto;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #fff0);
+      border-radius: 2px;
+    }
+    .grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin: 2rem 0;
+    }
+    .card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      padding: 1rem;
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      box-shadow: 0 8px 28px rgba(255,152,0,0.13);
+      transform: translateY(-5px) scale(1.03);
+    }
+    .card svg {
+      display: block;
+      margin: 0 auto 0.5rem auto;
+      width: 48px;
+      height: 48px;
+      opacity: 0.9;
+      transition: opacity var(--transition);
+    }
+    .card:hover svg {
+      opacity: 1;
+      filter: drop-shadow(0 0 6px var(--accent));
+    }
+    .card h3 {
+      margin: 0.3rem 0 0.5rem 0;
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .card p {
+      font-size: 1rem;
+      color: var(--text);
+      text-align: center;
+      margin: 0.2rem 0 0 0;
+    }
+    .about {
+      margin: 2rem 0 0 0;
+      text-align: center;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #555;
+      background: linear-gradient(90deg, #fff 70%, var(--accent) 100%);
+      padding: 1.5rem 0.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(255,152,0,0.08);
+      animation: fade-in 1.6s;
+    }
+    .gallery {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .gallery img, .gallery svg {
+      width: 170px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      cursor: pointer;
+      transition: transform var(--transition);
+      background: #fff;
+    }
+    .gallery img:hover, .gallery svg:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 6px 32px rgba(255,152,0,0.11);
+    }
+    .contact-form {
+      margin: 2rem auto;
+      max-width: 400px;
+      padding: 1.5rem 1rem;
+      background: var(--bg);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(255,152,0,0.09);
+      animation: fade-in 2s;
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      background: #fff;
+      transition: border var(--transition);
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border: 1.5px solid var(--accent);
+      outline: none;
+    }
+    .contact-form button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2.2rem;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition), box-shadow var(--transition);
+      box-shadow: 0 2px 10px rgba(255,152,0,0.16);
+    }
+    .contact-form button:hover {
+      background: #ffb74d;
+      box-shadow: 0 6px 24px rgba(255,152,0,0.19);
+    }
+    footer {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      border-radius: 0 0 var(--radius) var(--radius);
+      margin-top: 2rem;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 700px) {
+      header h1 { font-size: 2rem;}
+      .container { padding: 1rem 0.3rem;}
+      .section-title { font-size: 1.4rem;}
+      .grid { gap: 1rem;}
+      .gallery img, .gallery svg { width: 120px; height: 85px;}
+    }
+    /* Animación para resplandor en SVG */
+    .glow {
+      filter: drop-shadow(0 0 14px var(--accent));
+      animation: glow 1.6s infinite alternate;
+    }
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 8px var(--accent)); }
+      100% { filter: drop-shadow(0 0 20px #ffd700); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" class="glow">
+      <rect x="10" y="58" width="60" height="10" rx="4" fill="#ff9800"/>
+      <rect x="36" y="18" width="8" height="40" rx="4" fill="#323232"/>
+      <circle cx="40" cy="16" r="10" fill="#ff9800" stroke="#323232" stroke-width="2"/>
+      <path d="M32 32 Q40 38 48 32" stroke="#323232" stroke-width="2" fill="none"/>
+      <!-- Yunque estilizado y martillo -->
+      <rect x="28" y="44" width="24" height="8" rx="4" fill="#323232"/>
+      <rect x="24" y="36" width="8" height="20" rx="3" fill="#323232"/>
+      <rect x="48" y="36" width="8" height="20" rx="3" fill="#323232"/>
+    </svg>
+    <h1>Herrería Soldalexca44</h1>
+    <nav>
+      <a href="#servicios" class="active">Servicios</a>
+      <a href="#galeria">Galería</a>
+      <a href="#nosotros">Sobre Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+  <main>
+    <section class="container" id="servicios">
+      <div class="section-title">Servicios de Herrería</div>
+      <div class="grid">
+        <div class="card">
+          <svg viewBox="0 0 48 48">
+            <rect x="6" y="30" width="36" height="8" rx="2" fill="#ff9800"/>
+            <rect x="20" y="10" width="8" height="20" rx="2" fill="#323232"/>
+            <rect x="12" y="18" width="24" height="6" rx="2" fill="#ff9800"/>
+            <rect x="16" y="24" width="16" height="4" rx="2" fill="#323232"/>
+          </svg>
+          <h3>Puertas y Ventanas</h3>
+          <p>Fabricación y diseño de puertas y ventanas de hierro, con acabados de alta calidad y diseño personalizado para cada espacio.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 48 48">
+            <rect x="8" y="8" width="32" height="32" rx="8" fill="#323232"/>
+            <path d="M12 36 L36 12" stroke="#ff9800" stroke-width="3"/>
+            <path d="M12 12 L36 36" stroke="#ff9800" stroke-width="3"/>
+          </svg>
+          <h3>Rejas y Barandales</h3>
+          <p>Instalación de rejas y barandales seguros, estéticos y resistentes para proteger y embellecer cualquier propiedad.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 48 48">
+            <ellipse cx="24" cy="30" rx="16" ry="7" fill="#ff9800"/>
+            <rect x="20" y="10" width="8" height="20" rx="4" fill="#323232"/>
+            <rect x="16" y="36" width="16" height="4" rx="2" fill="#323232"/>
+          </svg>
+          <h3>Estructuras y Techos</h3>
+          <p>Montaje de estructuras metálicas, techos y soportes, ideales para naves industriales y residencias.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="16" fill="#ff9800"/>
+            <path d="M24 8 L24 40" stroke="#323232" stroke-width="3"/>
+            <path d="M8 24 L40 24" stroke="#323232" stroke-width="3"/>
+            <circle cx="24" cy="24" r="6" fill="#fff"/>
+          </svg>
+          <h3>Arte en Hierro</h3>
+          <p>Creación de piezas artísticas y decorativas en hierro, ideales para interiores y exteriores.</p>
+        </div>
+      </div>
+    </section>
+    <section class="container gallery" id="galeria">
+      <div class="section-title">Galería de Proyectos</div>
+      <!-- Usa imágenes reales o svg artísticos si no hay fotos -->
+      <svg viewBox="0 0 170 120">
+        <rect x="10" y="70" width="150" height="30" rx="8" fill="#323232"/>
+        <rect x="60" y="20" width="50" height="60" rx="12" fill="#ff9800"/>
+        <rect x="80" y="60" width="10" height="40" rx="4" fill="#fff"/>
+        <ellipse cx="85" cy="40" rx="8" ry="12" fill="#fff"/>
+        <text x="40" y="110" font-size="20" fill="#fff">Puerta</text>
+      </svg>
+      <svg viewBox="0 0 170 120">
+        <rect x="40" y="20" width="90" height="80" rx="14" fill="#323232"/>
+        <rect x="50" y="35" width="70" height="40" rx="10" fill="#ff9800"/>
+        <rect x="105" y="80" width="10" height="10" rx="2" fill="#fff"/>
+        <text x="50" y="115" font-size="20" fill="#fff">Ventana</text>
+      </svg>
+      <svg viewBox="0 0 170 120">
+        <rect x="20" y="50" width="130" height="40" rx="16" fill="#ff9800"/>
+        <ellipse cx="85" cy="40" rx="60" ry="18" fill="#323232"/>
+        <text x="45" y="110" font-size="20" fill="#fff">Barandal</text>
+      </svg>
+      <svg viewBox="0 0 170 120">
+        <circle cx="85" cy="60" r="50" fill="#ff9800"/>
+        <path d="M35 60 Q85 10 135 60 Q85 110 35 60Z" stroke="#323232" stroke-width="3" fill="none"/>
+        <text x="60" y="115" font-size="20" fill="#fff">Arte</text>
+      </svg>
+    </section>
+    <section class="container about" id="nosotros">
+      <div class="section-title">Sobre la Herrería</div>
+      <p>
+        La herrería es un arte y oficio milenario dedicado al trabajo del hierro y los metales. En Soldalexca44 ofrecemos soluciones integrales, desde la fabricación de estructuras hasta el diseño de piezas artísticas. Utilizamos técnicas modernas y tradicionales, garantizando calidad, seguridad y estética en cada proyecto. Nuestro equipo está formado por expertos apasionados que cuidan cada detalle, desde el corte y la soldadura hasta los acabados y la instalación. Ya sea para proteger tu hogar, embellecer tu espacio o crear una estructura robusta, la herrería es sinónimo de durabilidad y estilo.
+      </p>
+    </section>
+    <section class="container" id="contacto">
+      <div class="section-title">Contacto</div>
+      <form class="contact-form" autocomplete="off" action="mailto:contacto@tusitio.com" method="POST" enctype="text/plain">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="Nombre" required placeholder="Tu nombre">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" required placeholder="Tu email">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="Mensaje" rows="4" required placeholder="¿En qué podemos ayudarte?"></textarea>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Herrería Soldalexca44 &mdash; Todos los derechos reservados.
+  </footer>
+</body>
+  </html>
